@@ -10,6 +10,7 @@ terraform {
 
 provider "azurerm" {
   features {}
+  resource_provider_registrations = "none"
 }
 
 # Referencia al Resource Group existente del alumno
