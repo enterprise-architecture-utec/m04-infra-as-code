@@ -20,8 +20,8 @@ Configurar el provider de AWS en Terraform y crear una VPC (Virtual Private Clou
       |   |          10.x.1.0/24              |   |
       |   |                                   |   |
       |   |  +-----------------------------+  |   |
-      |   |  |   Recursos en AWS (EC2,      |  |   |
-      |   |  |   ALB, etc.)                 |  |   |
+      |   |  |   Recursos en AWS (EC2,     |  |   |
+      |   |  |   ALB, etc.)                |  |   |
       |   |  +-----------------------------+  |   |
       |   +-----------------------------------+   |
       +--------------------------|----------------+
