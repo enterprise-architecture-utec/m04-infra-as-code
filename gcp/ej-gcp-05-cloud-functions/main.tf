@@ -17,6 +17,11 @@ provider "google" {
   region  = var.region
 }
 
+locals {
+  function_name = var.function_name != null ? var.function_name : "fn-${var.student_name}-lab05"
+  bucket_name   = "${var.project_id}-fn-${var.student_name}-lab05"
+}
+
 # Empaquetar el codigo fuente automaticamente
 data "archive_file" "function_zip" {
   type        = "zip"
@@ -26,7 +31,7 @@ data "archive_file" "function_zip" {
 
 # Bucket para almacenar el codigo
 resource "google_storage_bucket" "function_bucket" {
-  name                        = "${var.project_id}-fn-utec-lab05"
+  name                        = local.bucket_name
   location                    = "US"
   force_destroy               = true
   uniform_bucket_level_access = true
@@ -34,14 +39,14 @@ resource "google_storage_bucket" "function_bucket" {
 
 # Subir el ZIP al bucket
 resource "google_storage_bucket_object" "function_zip" {
-  name   = "fn-utec-lab05-${data.archive_file.function_zip.output_md5}.zip"
+  name   = "fn-${var.student_name}-lab05-${data.archive_file.function_zip.output_md5}.zip"
   bucket = google_storage_bucket.function_bucket.name
   source = data.archive_file.function_zip.output_path
 }
 
 # Cloud Function Gen 2
 resource "google_cloudfunctions2_function" "fn_utec" {
-  name     = var.function_name
+  name     = local.function_name
   location = var.region
 
   build_config {
@@ -65,14 +70,18 @@ resource "google_cloudfunctions2_function" "fn_utec" {
     all_traffic_on_latest_revision = true
 
     environment_variables = {
-      ENTORNO = "laboratorio"
-      CURSO   = "Arquitectura Multinube"
+      ENTORNO      = "laboratorio"
+      CURSO        = "Arquitectura Multinube"
+      STUDENT_NAME = var.student_name
+      STUDENT_ID   = tostring(var.student_id)
     }
   }
 
   labels = {
-    entorno = "laboratorio"
-    curso   = "arquitectura-multinube"
+    entorno      = "laboratorio"
+    curso        = "arquitectura-multinube"
+    student_name = var.student_name
+    student_id   = tostring(var.student_id)
   }
 }
 

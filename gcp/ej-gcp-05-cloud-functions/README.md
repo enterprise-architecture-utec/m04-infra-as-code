@@ -35,8 +35,8 @@ gcloud services enable artifactregistry.googleapis.com
 ### Paso 2: Aplicar
 ```bash
 terraform init
-terraform plan -var="project_id=<TU_PROJECT_ID>"
-terraform apply -var="project_id=<TU_PROJECT_ID>" -auto-approve
+terraform plan -var="project_id=<TU_PROJECT_ID>" -var="student_name=<TU_NOMBRE>" -var="student_id=<TU_ID>"
+terraform apply -var="project_id=<TU_PROJECT_ID>" -var="student_name=<TU_NOMBRE>" -var="student_id=<TU_ID>" -auto-approve
 # ⏱️ El build puede tardar 3-5 minutos
 ```
 
@@ -58,12 +58,12 @@ curl -X POST $FUNCTION_URL \
 
 ### Paso 4: Ver logs
 ```bash
-gcloud functions logs read fn-utec-lab05 --gen2 --region=us-central1 --limit=50
+gcloud functions logs read fn-<TU_NOMBRE>-lab05 --gen2 --region=us-central1 --limit=50
 ```
 
 ### Paso 5: Destruir
 ```bash
-terraform destroy -var="project_id=<TU_PROJECT_ID>" -auto-approve
+terraform destroy -var="project_id=<TU_PROJECT_ID>" -var="student_name=<TU_NOMBRE>" -var="student_id=<TU_ID>" -auto-approve
 ```
 
 ## ✅ Resultado Esperado
@@ -71,8 +71,8 @@ terraform destroy -var="project_id=<TU_PROJECT_ID>" -auto-approve
 Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 
 Outputs:
-function_name    = "fn-utec-lab05"
-function_url     = "https://fn-utec-lab05-abc123-uc.a.run.app"
+function_name    = "fn-<TU_NOMBRE>-lab05"
+function_url     = "https://fn-<TU_NOMBRE>-lab05-abc123-uc.a.run.app"
 function_region  = "us-central1"
 ```
 
@@ -81,7 +81,11 @@ Respuesta del curl:
 {
   "mensaje": "Hola UTEC desde Cloud Functions Gen 2!",
   "entorno": "laboratorio",
-  "metodo": "GET"
+  "curso": "Arquitectura Multinube",
+  "student_name": "<TU_NOMBRE>",
+  "student_id": "<TU_ID>",
+  "metodo": "GET",
+  "path": "/"
 }
 ```
 

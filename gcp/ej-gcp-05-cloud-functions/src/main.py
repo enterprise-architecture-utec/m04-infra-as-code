@@ -11,6 +11,8 @@ def hello_http(request):
     """
     entorno = os.environ.get("ENTORNO", "desconocido")
     curso = os.environ.get("CURSO", "desconocido")
+    student_name = os.environ.get("STUDENT_NAME", "desconocido")
+    student_id = os.environ.get("STUDENT_ID", "desconocido")
 
     # Obtener nombre del query param o del body JSON
     nombre = "Estudiante"
@@ -27,11 +29,13 @@ def hello_http(request):
         "mensaje": f"Hola {nombre} desde Cloud Functions Gen 2!",
         "entorno": entorno,
         "curso": curso,
+        "student_name": student_name,
+        "student_id": student_id,
         "metodo": request.method,
         "path": request.path,
     }
 
-    print(f"[INFO] Request de {nombre} via {request.method}")
+    print(f"[INFO] Request de {nombre} via {request.method} por estudiante {student_name} (ID: {student_id})")
 
     return (
         json.dumps(respuesta, ensure_ascii=False),
