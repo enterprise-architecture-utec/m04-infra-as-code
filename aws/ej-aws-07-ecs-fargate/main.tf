@@ -98,7 +98,7 @@ resource "aws_cloudwatch_log_group" "ecs_logs" {
 
 # Security Group para las tareas ECS
 resource "aws_security_group" "sg_ecs" {
-  name        = "sg-${local.base_name}-ecs-lab07"
+  name        = "${local.base_name}-ecs-lab07-sg"
   description = "Security group para tareas ECS Fargate"
   vpc_id      = aws_vpc.vpc_utec.id
 
