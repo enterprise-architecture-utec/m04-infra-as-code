@@ -21,13 +21,7 @@ ej-aws-04-lambda/
 
 ## 🚀 Pasos
 
-### Paso 1: Empaquetar el código Python
-```bash
-# El archivo lambda_function.py ya está incluido en esta carpeta
-zip function.zip lambda_function.py
-```
-
-### Paso 2: Aplicar
+### Paso 1: Aplicar
 ```bash
 terraform init
 terraform plan
@@ -36,6 +30,7 @@ terraform apply -auto-approve
 
 ### Paso 3: Invocar la función manualmente
 ```bash
+# Obtener el nombre generado automáticamente
 FUNCTION=$(terraform output -raw function_name)
 
 aws lambda invoke \
@@ -49,30 +44,23 @@ cat response.json
 
 ### Paso 4: Ver los logs en CloudWatch
 ```bash
-aws logs tail /aws/lambda/$FUNCTION --follow
+aws logs tail /aws/lambda/$FUNCTION
 ```
 
 ### Paso 5: Destruir
 ```bash
-terraform destroy -auto-approve
+terraform destroy -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 ```
 
 ## ✅ Resultado Esperado
 ```
-Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 
 Outputs:
-function_arn  = "arn:aws:lambda:us-east-1:123456789:function:fn-utec-lab04"
-function_name = "fn-utec-lab04"
-role_arn      = "arn:aws:iam::123456789:role/role-utec-lambda"
+function_name = "fn-utec-jose-04"
+role_arn      = "arn:aws:iam::123456789:role/role-utec-lambda-jose-04"
 ```
 
-Respuesta de la invocación:
-```json
-{"statusCode": 200, "body": "Hola UTEC desde Lambda! Entorno: laboratorio"}
-```
 
 ## 📝 Notas
 - Lambda tiene 1 millón de invocaciones gratuitas por mes en el Free Tier.
-- `source_code_hash` asegura que Terraform detecte cambios en el ZIP y redeploy automáticamente.
-- En producción, usa `aws_cloudwatch_log_group` para configurar retención de logs.

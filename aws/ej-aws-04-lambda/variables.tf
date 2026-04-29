@@ -4,8 +4,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "function_name" {
-  description = "Nombre de la funcion Lambda"
+variable "student_name" {
+  description = "Nombre o iniciales del alumno (minúsculas)"
   type        = string
-  default     = "fn-utec-lab04"
+}
+
+variable "student_id" {
+  description = "ID único del alumno"
+  type        = string
 }
