@@ -57,8 +57,8 @@ aws logs tail /ecs/{tu_nombre}-{id}-utec-nginx --follow
 ```bash
 # Escalar a 3 replicas
 aws ecs update-service \
-  --cluster {tu_nombre}-cluster-utec-lab07 \
-  --service {tu_nombre}-svc-utec-nginx \
+  --cluster {tu_nombre}-{id}-cluster-utec-lab07 \
+  --service {tu_nombre}-{id}-svc-utec-nginx \
   --desired-count 3
 ```
 
