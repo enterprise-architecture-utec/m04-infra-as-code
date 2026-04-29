@@ -13,19 +13,14 @@ terraform-labs/
 ├── azure/
 │   ├── ej-az-02-vnet-subnet/
 │   ├── ej-az-03-storage-account/
-│   ├── ej-az-07-key-vault/
-│   └── ej-az-08-container-registry/
 ├── aws/
 │   ├── ej-aws-01-vpc/
 │   ├── ej-aws-03-s3/
 │   ├── ej-aws-04-lambda/
 │   ├── ej-aws-07-ecs-fargate/
-│   └── ej-aws-08-sns-sqs/
 └── gcp/
     ├── ej-gcp-01-vpc/
-    ├── ej-gcp-03-cloud-storage/
     ├── ej-gcp-05-cloud-functions/
-    └── ej-gcp-07-pubsub/
 ```
 
 ---
@@ -100,8 +95,6 @@ terraform destroy -auto-approve
 |---|-----------|----------|----------------|
 | AZ-02 | [Crear VNet y Subnet](azure/ej-az-02-vnet-subnet/README.md) | Virtual Network | 15 min |
 | AZ-03 | [Storage Account y Blob](azure/ej-az-03-storage-account/README.md) | Storage | 15 min |
-| AZ-07 | [Key Vault y Secretos](azure/ej-az-07-key-vault/README.md) | Seguridad | 15 min |
-| AZ-08 | [Container Registry](azure/ej-az-08-container-registry/README.md) | Contenedores | 15 min |
 
 ### ☁️ AWS
 | # | Ejercicio | Servicio | Tiempo estimado |
@@ -110,15 +103,12 @@ terraform destroy -auto-approve
 | AWS-03 | [S3 Bucket con Versionado](aws/ej-aws-03-s3/README.md) | S3 | 15 min |
 | AWS-04 | [Función Lambda](aws/ej-aws-04-lambda/README.md) | Serverless | 20 min |
 | AWS-07 | [ECS Fargate](aws/ej-aws-07-ecs-fargate/README.md) | Contenedores | 25 min |
-| AWS-08 | [SNS + SQS](aws/ej-aws-08-sns-sqs/README.md) | Mensajería | 15 min |
 
 ### ☁️ GCP
 | # | Ejercicio | Servicio | Tiempo estimado |
 |---|-----------|----------|----------------|
 | GCP-01 | [VPC y Subnet](gcp/ej-gcp-01-vpc/README.md) | VPC | 15 min |
-| GCP-03 | [Cloud Storage Bucket](gcp/ej-gcp-03-cloud-storage/README.md) | Storage | 15 min |
 | GCP-05 | [Cloud Functions](gcp/ej-gcp-05-cloud-functions/README.md) | Serverless | 20 min |
-| GCP-07 | [Pub/Sub](gcp/ej-gcp-07-pubsub/README.md) | Mensajería | 15 min |
 
 ---
 
