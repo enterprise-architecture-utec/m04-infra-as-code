@@ -9,6 +9,26 @@ Crear una cuenta de almacenamiento en Azure y un contenedor Blob para almacenar 
 - **LRS:** Locally Redundant Storage — 3 copias en el mismo datacenter.
 - **Variables de entrada:** Permiten parametrizar el código para reutilizarlo.
 
+## 🧭 Diagrama de arquitectura
+```
++----------------------+     +-----------------------------+
+| Resource Group       | --> | Storage Account             |
+| (existing alumno RG) |     | - Standard LRS              |
++----------------------+     | - Blob storage enabled      |
+                              +-------------+---------------+
+                                            |
+                                            v
+                              +-----------------------------+
+                              | Blob Container              |
+                              | - contenedor privado         |
+                              | - nombre: archivos-utec      |
+                              +-----------------------------+
+
+Salida principal:
+- Blob endpoint: https://<storage_account>.blob.core.windows.net/
+- Access key: clave primaria sensible
+```
+
 ## 📁 Archivos
 ```
 ej-az-03-storage-account/
