@@ -45,7 +45,7 @@ cat response.json
 
 ### Paso 4: Ver los logs en CloudWatch
 ```bash
-aws logs tail /aws/lambda/$FUNCTION
+aws logs tail /aws/lambda/$FUNCTION --region us-east-1
 ```
 
 ### Paso 5: Destruir
