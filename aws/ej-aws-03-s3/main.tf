@@ -12,16 +12,18 @@ provider "aws" {
   region = var.aws_region
 }
 
-# Bucket S3
+# Bucket S3 con nombre único global
 resource "aws_s3_bucket" "bucket_utec" {
-  bucket        = var.bucket_name
+  # Construcción dinámica: ej. utec-iac-lab-jose-01
+  bucket        = "utec-iac-lab-${var.student_name}-${var.student_id}"
   force_destroy = true
 
   tags = {
-    Name    = var.bucket_name
+    Name    = "utec-iac-lab-${var.student_name}-${var.student_id}"
     Entorno = "Laboratorio"
     Curso   = "Arquitectura Multinube"
     Modulo  = "Modulo 4 - IaC"
+    Alumno  = var.student_name
   }
 }
 
@@ -46,7 +48,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "sse" {
   }
 }
 
-# Bloquear acceso publico (buena practica)
+# Bloquear acceso publico
 resource "aws_s3_bucket_public_access_block" "block_public" {
   bucket = aws_s3_bucket.bucket_utec.id
 
@@ -56,7 +58,7 @@ resource "aws_s3_bucket_public_access_block" "block_public" {
   restrict_public_buckets = true
 }
 
-# Politica de ciclo de vida: mover a Glacier despues de 90 dias
+# Politica de ciclo de vida
 resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
   bucket = aws_s3_bucket.bucket_utec.id
 

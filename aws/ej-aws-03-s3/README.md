@@ -1,7 +1,7 @@
 # EJ-AWS-03: Crear un Bucket S3 con Versionado y Cifrado
 
 ## 🎯 Objetivo
-Crear un bucket S3 con buenas prácticas de seguridad: versionado habilitado, cifrado AES-256 en reposo y bloqueo de acceso público.
+Configurar un bucket de Amazon S3 utilizando Terraform, aplicando buenas prácticas de seguridad como el versionado, cifrado en reposo y bloqueo de acceso público. Además, se implementará una política de ciclo de vida para optimizar costos.
 
 ## 📋 Conceptos Clave
 - **S3 (Simple Storage Service):** Almacenamiento de objetos altamente disponible y duradero.
@@ -20,54 +20,41 @@ ej-aws-03-s3/
 
 ## 🚀 Pasos
 
-### Paso 1: Ajustar el nombre del bucket
-El nombre debe ser **único globalmente** en AWS. Edita `variables.tf` y cambia `bucket_name`.
+### Paso 1: Configurar variables personales
+Para evitar conflictos en la cuenta compartida (ya que los nombres de S3 son únicos globales), cada alumno deberá usar su nombre y un ID.
 
-### Paso 2: Aplicar
+
+### Paso 2: Ejecuta los comandos pasando tus datos como variables:
 ```bash
 terraform init
-terraform plan
-terraform apply -auto-approve
+
+# Reemplaza 'tu_nombre' y 'tu_id' (ej: aldo y 01)
+terraform plan -var="student_name=tu_nombre" -var="student_id=tu_id"
+terraform apply -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 ```
 
-### Paso 3: Subir un archivo de prueba
+### Paso 3: Verificar en AWS Console
+- Ir a S3 en la consola de AWS.
+- Localizar el bucket: utec-iac-lab-[tu_nombre]-[id].
+- En la pestaña Propiedades, verificar que el "Versionado" y el "Cifrado predeterminado" estén habilitados.
+- En la pestaña Administración, verificar la regla de ciclo de vida (Glacier).
+
+### Paso 4: Ver Outputs
 ```bash
-BUCKET=$(terraform output -raw bucket_name)
-
-# Subir un archivo
-echo "Hola UTEC desde S3" > test.txt
-aws s3 cp test.txt s3://$BUCKET/test.txt
-
-# Listar objetos
-aws s3 ls s3://$BUCKET/
-
-# Subir segunda version del archivo
-echo "Version 2 del archivo" > test.txt
-aws s3 cp test.txt s3://$BUCKET/test.txt
-
-# Ver versiones
-aws s3api list-object-versions --bucket $BUCKET --prefix test.txt
+terraform output
 ```
 
-### Paso 4: Destruir
+### Paso 5: Destruir
 ```bash
-# Vaciar el bucket primero (requerido antes de destroy)
-aws s3 rm s3://$BUCKET --recursive
-terraform destroy -auto-approve
+terraform destroy -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 ```
 
-## ✅ Resultado Esperado
-```
-Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+### Paso 6: Resultado esperado
+```bash
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
 
 Outputs:
-bucket_arn           = "arn:aws:s3:::utec-laboratorio-multinube-2024"
-bucket_name          = "utec-laboratorio-multinube-2024"
-bucket_region        = "us-east-1"
-versioning_status    = "Enabled"
+bucket_name       = "utec-iac-lab-jose-01"
+bucket_region     = "us-east-1"
+versioning_status = "Enabled"
 ```
-
-## 📝 Notas
-- Los nombres de bucket S3 son globalmente únicos en toda AWS — agrega tu nombre o fecha.
-- `force_destroy = true` en Terraform permite borrar el bucket aunque tenga objetos (útil en labs).
-- En producción, usa `aws_s3_bucket_lifecycle_configuration` para gestionar costos automáticamente.

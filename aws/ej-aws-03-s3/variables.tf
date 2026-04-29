@@ -4,8 +4,12 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-variable "bucket_name" {
-  description = "Nombre unico global del bucket S3 (solo minusculas, numeros y guiones)"
+variable "student_name" {
+  description = "Nombre o iniciales del alumno (solo minúsculas y números)"
   type        = string
-  default     = "utec-laboratorio-multinube-2024"
+}
+
+variable "student_id" {
+  description = "ID único del alumno para asegurar unicidad global"
+  type        = string
 }
