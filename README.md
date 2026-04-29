@@ -98,12 +98,8 @@ terraform destroy -auto-approve
 ### ☁️ Azure
 | # | Ejercicio | Servicio | Tiempo estimado |
 |---|-----------|----------|----------------|
-| AZ-01 | [Crear un Resource Group](azure/ej-az-01-resource-group/README.md) | Resource Group | 10 min |
 | AZ-02 | [Crear VNet y Subnet](azure/ej-az-02-vnet-subnet/README.md) | Virtual Network | 15 min |
 | AZ-03 | [Storage Account y Blob](azure/ej-az-03-storage-account/README.md) | Storage | 15 min |
-| AZ-04 | [Máquina Virtual Linux](azure/ej-az-04-virtual-machine/README.md) | Compute | 20 min |
-| AZ-05 | [Azure SQL Database](azure/ej-az-05-sql-database/README.md) | Database | 20 min |
-| AZ-06 | [App Service Web App](azure/ej-az-06-app-service/README.md) | PaaS | 15 min |
 | AZ-07 | [Key Vault y Secretos](azure/ej-az-07-key-vault/README.md) | Seguridad | 15 min |
 | AZ-08 | [Container Registry](azure/ej-az-08-container-registry/README.md) | Contenedores | 15 min |
 
@@ -111,11 +107,8 @@ terraform destroy -auto-approve
 | # | Ejercicio | Servicio | Tiempo estimado |
 |---|-----------|----------|----------------|
 | AWS-01 | [Crear VPC y Subnet](aws/ej-aws-01-vpc/README.md) | VPC | 15 min |
-| AWS-02 | [Instancia EC2](aws/ej-aws-02-ec2/README.md) | EC2 | 20 min |
 | AWS-03 | [S3 Bucket con Versionado](aws/ej-aws-03-s3/README.md) | S3 | 15 min |
 | AWS-04 | [Función Lambda](aws/ej-aws-04-lambda/README.md) | Serverless | 20 min |
-| AWS-05 | [RDS MySQL](aws/ej-aws-05-rds/README.md) | Database | 20 min |
-| AWS-06 | [API Gateway + Lambda](aws/ej-aws-06-api-gateway/README.md) | API | 25 min |
 | AWS-07 | [ECS Fargate](aws/ej-aws-07-ecs-fargate/README.md) | Contenedores | 25 min |
 | AWS-08 | [SNS + SQS](aws/ej-aws-08-sns-sqs/README.md) | Mensajería | 15 min |
 
@@ -123,11 +116,8 @@ terraform destroy -auto-approve
 | # | Ejercicio | Servicio | Tiempo estimado |
 |---|-----------|----------|----------------|
 | GCP-01 | [VPC y Subnet](gcp/ej-gcp-01-vpc/README.md) | VPC | 15 min |
-| GCP-02 | [Compute Engine VM](gcp/ej-gcp-02-compute-engine/README.md) | Compute | 20 min |
 | GCP-03 | [Cloud Storage Bucket](gcp/ej-gcp-03-cloud-storage/README.md) | Storage | 15 min |
-| GCP-04 | [Cloud SQL PostgreSQL](gcp/ej-gcp-04-cloud-sql/README.md) | Database | 20 min |
 | GCP-05 | [Cloud Functions](gcp/ej-gcp-05-cloud-functions/README.md) | Serverless | 20 min |
-| GCP-06 | [GKE Cluster](gcp/ej-gcp-06-gke/README.md) | Kubernetes | 25 min |
 | GCP-07 | [Pub/Sub](gcp/ej-gcp-07-pubsub/README.md) | Mensajería | 15 min |
 
 ---
