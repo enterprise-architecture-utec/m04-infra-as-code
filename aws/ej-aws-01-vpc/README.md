@@ -32,8 +32,9 @@ aws configure
 ### Paso 2: Aplicar
 ```bash
 terraform init
-terraform plan
-terraform apply -auto-approve
+# Ejemplo para el alumno Juan con ID 5
+terraform plan -var="student_name=XXXXX" -var="student_id=XX"
+terraform apply -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 ```
 
 ### Paso 3: Verificar en AWS Console
