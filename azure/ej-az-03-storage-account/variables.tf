@@ -1,13 +1,16 @@
 variable "resource_group_name" {
-  description = "Nombre del Resource Group"
+  description = "Nombre del Resource Group asignado al alumno"
   type        = string
-  default     = "rg-utec-lab01"
 }
 
-variable "storage_account_name" {
-  description = "Nombre unico de la Storage Account (3-24 chars, solo minusculas y numeros)"
+variable "student_name" {
+  description = "Nombre o iniciales del alumno (solo minúsculas y números)"
   type        = string
-  default     = "suteclaboratorio01"
+}
+
+variable "student_id" {
+  description = "ID único del alumno (ej: 01, 02...)"
+  type        = string
 }
 
 variable "container_name" {
