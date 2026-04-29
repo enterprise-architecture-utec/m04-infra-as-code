@@ -22,50 +22,62 @@ ej-aws-07-ecs-fargate/
 ## 🚀 Pasos
 
 ### Paso 1: Pre-requisitos
-Necesitas la VPC y Subnet del ejercicio AWS-01.
+Este ejercicio es independiente y crea todos los recursos necesarios, incluyendo VPC, subnet y gateway de internet. No requiere recursos de otros ejercicios.
+
+### Paso 1.5: Configurar variables
+Para evitar conflictos con otros estudiantes en la misma cuenta de AWS, configura tus variables únicas:
+```bash
+export TF_VAR_student_name="tu_nombre"  # ej: "juan_perez"
+export TF_VAR_student_id="tu_id"        # ej: "12345"
+```
+O pásalas directamente en los comandos de Terraform con `-var="student_name=tu_nombre" -var="student_id=tu_id"`.
+
+El nombre del cluster se construye automáticamente como `{student_name}-{student_id}-cluster-utec-lab07` si no se proporciona `cluster_name`.
 
 ### Paso 2: Aplicar
 ```bash
 terraform init
-terraform plan
-terraform apply -auto-approve
+terraform plan -var="student_name=tu_nombre" -var="student_id=tu_id"
+terraform apply -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 # ⏱️ ECS tarda ~2 minutos en lanzar las tareas
 ```
 
 ### Paso 3: Verificar el servicio en AWS Console
-1. Ir a **ECS** → **Clusters** → `cluster-utec-lab07`
-2. Seleccionar el servicio `svc-utec-nginx`
+1. Ir a **ECS** → **Clusters** → `{tu_nombre}-cluster-utec-lab07`
+2. Seleccionar el servicio `{tu_nombre}-svc-utec-nginx`
 3. En la pestaña **Tasks**, verificar que la tarea está en estado `RUNNING`
 4. Copiar la IP pública de la tarea y abrirla en el navegador
 
 ### Paso 4: Ver logs del contenedor
 ```bash
-aws logs tail /ecs/utec-nginx --follow
+aws logs tail /ecs/{tu_nombre}-utec-nginx --follow
 ```
 
 ### Paso 5: Escalar el servicio
 ```bash
 # Escalar a 3 replicas
 aws ecs update-service \
-  --cluster cluster-utec-lab07 \
-  --service svc-utec-nginx \
+  --cluster {tu_nombre}-cluster-utec-lab07 \
+  --service {tu_nombre}-svc-utec-nginx \
   --desired-count 3
 ```
 
 ### Paso 6: Destruir
 ```bash
-terraform destroy -auto-approve
+terraform destroy -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 ```
 
 ## ✅ Resultado Esperado
 ```
-Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
 
 Outputs:
-cluster_arn      = "arn:aws:ecs:us-east-1:123456789:cluster/cluster-utec-lab07"
-cluster_name     = "cluster-utec-lab07"
-service_name     = "svc-utec-nginx"
-task_definition  = "task-utec-nginx:1"
+vpc_id           = "vpc-..."
+subnet_id        = "subnet-..."
+cluster_arn      = "arn:aws:ecs:us-east-1:123456789:cluster/{tu_nombre}-cluster-utec-lab07"
+cluster_name     = "{tu_nombre}-cluster-utec-lab07"
+service_name     = "{tu_nombre}-svc-utec-nginx"
+task_definition  = "{tu_nombre}-task-utec-nginx:1"
 ```
 
 ## 📝 Notas

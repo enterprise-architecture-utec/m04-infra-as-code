@@ -1,3 +1,13 @@
+output "vpc_id" {
+  description = "ID de la VPC creada"
+  value       = aws_vpc.vpc_utec.id
+}
+
+output "subnet_id" {
+  description = "ID de la subnet pública creada"
+  value       = aws_subnet.subnet_publica.id
+}
+
 output "cluster_name" {
   description = "Nombre del cluster ECS"
   value       = aws_ecs_cluster.cluster_utec.name
