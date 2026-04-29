@@ -35,6 +35,7 @@ FUNCTION=$(terraform output -raw function_name)
 
 aws lambda invoke \
   --function-name $FUNCTION \
+  --region us-east-1 \
   --payload '{"nombre": "UTEC"}' \
   --cli-binary-format raw-in-base64-out \
   response.json
