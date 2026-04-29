@@ -20,8 +20,8 @@ Crear una cuenta de almacenamiento en Azure y un contenedor Blob para almacenar 
                                             v
                               +-----------------------------+
                               | Blob Container              |
-                              | - contenedor privado         |
-                              | - nombre: archivos-utec      |
+                              | - contenedor privado        |
+                              | - nombre: archivos-utec     |
                               +-----------------------------+
 
 Salida principal:
