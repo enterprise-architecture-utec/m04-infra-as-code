@@ -50,7 +50,7 @@ terraform apply -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-appr
 
 ### Paso 4: Ver logs del contenedor
 ```bash
-aws logs tail /ecs/{tu_nombre}-utec-nginx --follow
+aws logs tail /ecs/{tu_nombre}-{id}-utec-nginx --follow
 ```
 
 ### Paso 5: Escalar el servicio
