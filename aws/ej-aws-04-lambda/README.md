@@ -24,8 +24,8 @@ ej-aws-04-lambda/
 ### Paso 1: Aplicar
 ```bash
 terraform init
-terraform plan
-terraform apply -auto-approve
+terraform plan -var="student_name=tu_nombre" -var="student_id=tu_id"
+terraform apply -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
 ```
 
 ### Paso 3: Invocar la función manualmente
