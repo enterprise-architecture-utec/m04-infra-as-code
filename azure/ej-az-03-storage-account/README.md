@@ -29,8 +29,7 @@ terraform init
 terraform plan \
   -var="student_name=XXX" \
   -var="student_id=XX" \
-  -var="resource_group_name=XXXX" \
-  -auto-approve
+  -var="resource_group_name=XXXX"
 
 
 terraform apply \
