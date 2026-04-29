@@ -19,20 +19,30 @@ ej-az-02-vnet-subnet/
 
 ## 🚀 Pasos
 
-### Paso 1: Asegúrate de tener el RG del ejercicio AZ-01
-Este ejercicio depende del Resource Group `rg-utec-lab01`. Si lo destruiste, vuelve a crearlo o ajusta la variable `resource_group_name`.
+### Paso 1: Asegúrate de tener el RG asignado
+Este ejercicio depende del Resource Group asignado a cada alumno por ejm `mod3lab2`.
 
 ### Paso 2: Inicializar y aplicar
+Deberás pasar tu nombre, tu ID (para el segmento de red) y el nombre exacto de tu RG.
 ```bash
 terraform init
-terraform plan
-terraform apply -auto-approve
+
+terraform plan \
+  -var="student_name=XXXX" \
+  -var="student_id=XXX" \
+  -var="resource_group_name=XXXX"
+
+terraform apply \
+  -var="student_name=XXXX" \
+  -var="student_id=XXX" \
+  -var="resource_group_name=XXXX" \
+  -auto-approve
 ```
 
 ### Paso 3: Verificar en Azure Portal
 1. Ir a **Virtual Networks**
-2. Seleccionar `vnet-utec-lab02`
-3. En **Subnets**, verificar que existe `snet-privada` con CIDR `10.0.1.0/24`
+2. Seleccionar la VNet que lleva tu nombre: vnet-utec-tu_nombre.
+3. En Subnets, verificar que el rango IP corresponde a tu ID: `10.[tu_id].1.0/24`.
 
 ### Paso 4: Explorar con Terraform
 ```bash
@@ -43,7 +53,11 @@ terraform graph | dot -Tpng > grafo.png  # Requiere graphviz
 
 ### Paso 5: Destruir
 ```bash
-terraform destroy -auto-approve
+terraform destroy \
+  -var="student_name=tu_nombre" \
+  -var="student_id=tu_id" \
+  -var="resource_group_name=tu_rg" \
+  -auto-approve
 ```
 
 ## ✅ Resultado Esperado
@@ -57,6 +71,6 @@ vnet_name      = "vnet-utec-lab02"
 ```
 
 ## 📝 Notas
-- El CIDR de la VNet (`10.0.0.0/16`) debe contener el CIDR de todas sus subnets.
-- Una subnet no puede solaparse con otra dentro de la misma VNet.
+- Al usar un bloque data para el Resource Group, Terraform no intentará crearlo ni borrarlo, solo leerá su ubicación.
+- Importante: Si el nombre del RG no es exacto al que aparece en el portal, el comando fallará con un error de `ResourceGroupNotFound`.
 - Usa `terraform graph` para visualizar las dependencias entre recursos.
