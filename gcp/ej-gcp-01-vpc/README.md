@@ -44,7 +44,7 @@ terraform apply \
   -var="project_id=<TU_PROJECT_ID>" \
   -var="student_name=XXX" \
   -var="student_id=X" \
-  -auto-approve-auto-approve
+  -auto-approve
 ```
 
 ### Paso 4: Verificar en la consola GCP
@@ -59,7 +59,7 @@ terraform destroy \
   -var="project_id=<TU_PROJECT_ID>" \
   -var="student_name=XXX" \
   -var="student_id=X" \
-  -auto-approve-auto-approve
+  -auto-approve
 ```
 
 ## ✅ Resultado Esperado
