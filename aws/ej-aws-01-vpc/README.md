@@ -11,20 +11,27 @@ Configurar el provider de AWS en Terraform y crear una VPC (Virtual Private Clou
 
 ## 🧭 Diagrama de Arquitectura
 ```text
-[Usuario / Internet]
-        |
-        v
-[Internet Gateway]
-        |
-        v
-[VPC (10.x.0.0/16)]
-        |
-        v
-[Subnet Pública (10.x.1.0/24)]
-        |
-        v
-[Recursos en AWS]
-```
+      +-------------------------------------------+
+      |                  VPC                      |
+      |              10.x.0.0/16                  |
+      |                                           |
+      |   +-----------------------------------+   |
+      |   |          Subnet Pública           |   |
+      |   |          10.x.1.0/24              |   |
+      |   |                                   |   |
+      |   |  +-----------------------------+  |   |
+      |   |  |   Recursos en AWS (EC2,      |  |   |
+      |   |  |   ALB, etc.)                 |  |   |
+      |   |  +-----------------------------+  |   |
+      |   +-----------------------------------+   |
+      +--------------------------|----------------+
+                                 |
+                                 v
+                       +-------------------------+
+                       |     Internet Gateway    |
+                       |        (IGW)            |
+                       +-------------------------+
+``` 
 
 ## 📁 Archivos
 ```
