@@ -10,16 +10,20 @@ Configurar el provider de AWS en Terraform y crear una VPC (Virtual Private Clou
 - **Route Table:** Tabla de enrutamiento que define hacia dónde va el tráfico de red.
 
 ## 🧭 Diagrama de Arquitectura
-```mermaid
-graph LR
-  A[Usuario/Internet] --> B[Internet Gateway]
-  B --> C[VPC (10.x.0.0/16)]
-  C --> D[Subnet Pública (10.x.1.0/24)]
-  D --> E[Recursos en AWS]
-  subgraph VPC
-    C
-    D
-  end
+```text
+[Usuario / Internet]
+        |
+        v
+[Internet Gateway]
+        |
+        v
+[VPC (10.x.0.0/16)]
+        |
+        v
+[Subnet Pública (10.x.1.0/24)]
+        |
+        v
+[Recursos en AWS]
 ```
 
 ## 📁 Archivos
