@@ -66,6 +66,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
     id     = "archive-rule"
     status = "Enabled"
 
+    # Esta es la parte que faltaba para eliminar el warning
+    filter {} 
+
     transition {
       days          = 90
       storage_class = "GLACIER"
