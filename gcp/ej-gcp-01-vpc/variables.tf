@@ -1,5 +1,5 @@
 variable "project_id" {
-  description = "ID del proyecto GCP (ej: mi-proyecto-123456)"
+  description = "ID del proyecto GCP"
   type        = string
 }
 
@@ -9,20 +9,18 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "vpc_name" {
-  description = "Nombre de la VPC"
+variable "student_name" {
+  description = "Nombre o iniciales del alumno (minúsculas)"
   type        = string
-  default     = "vpc-utec-lab01"
 }
 
-variable "subnet_name" {
-  description = "Nombre de la subnet"
-  type        = string
-  default     = "subnet-utec-lab01"
+variable "student_id" {
+  description = "ID único del alumno para segmentar la red"
+  type        = number
 }
 
-variable "subnet_cidr" {
-  description = "Bloque CIDR de la subnet"
+variable "vpc_cidr_base" {
+  description = "Base del bloque CIDR de la VPC"
   type        = string
-  default     = "10.0.1.0/24"
+  default     = "10"
 }

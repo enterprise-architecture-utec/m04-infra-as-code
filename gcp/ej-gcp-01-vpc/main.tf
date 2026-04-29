@@ -13,17 +13,17 @@ provider "google" {
   region  = var.region
 }
 
-# VPC en modo personalizado (sin subnets automaticas)
+# VPC en modo personalizado con nombre único
 resource "google_compute_network" "vpc_utec" {
-  name                    = var.vpc_name
+  name                    = "vpc-utec-${var.student_name}"
   auto_create_subnetworks = false
-  description             = "VPC para laboratorios UTEC - Arquitectura Multinube"
+  description             = "VPC para laboratorios UTEC - Alumno: ${var.student_name}"
 }
 
-# Subnet regional
+# Subnet regional con CIDR dinámico: 10.[student_id].1.0/24
 resource "google_compute_subnetwork" "subnet_utec" {
-  name          = var.subnet_name
-  ip_cidr_range = var.subnet_cidr
+  name          = "subnet-utec-${var.student_name}"
+  ip_cidr_range = "${var.vpc_cidr_base}.${var.student_id}.1.0/24"
   region        = var.region
   network       = google_compute_network.vpc_utec.id
 

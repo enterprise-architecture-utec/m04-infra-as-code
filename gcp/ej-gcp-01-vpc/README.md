@@ -34,18 +34,32 @@ gcloud services enable compute.googleapis.com
 ### Paso 3: Aplicar
 ```bash
 terraform init
-terraform plan -var="project_id=<TU_PROJECT_ID>"
-terraform apply -var="project_id=<TU_PROJECT_ID>" -auto-approve
+
+terraform plan \
+  -var="project_id=<TU_PROJECT_ID>" \
+  -var="student_name=XXX" \
+  -var="student_id=X"
+
+terraform apply \
+  -var="project_id=<TU_PROJECT_ID>" \
+  -var="student_name=XXX" \
+  -var="student_id=X" \
+  -auto-approve-auto-approve
 ```
 
 ### Paso 4: Verificar en la consola GCP
 1. Ir a **VPC Network** → **VPC Networks**
-2. Confirmar que `vpc-utec-lab01` existe con modo `Custom`
-3. En **Subnets**, verificar `subnet-utec-lab01` en `us-central1` con CIDR `10.0.1.0/24`
+2. Tu red aparecerá como vpc-utec-tu_nombre.
+3. Valida que tu subnet tenga el rango IP `10.[tu_id].1.0/24`.
+
 
 ### Paso 5: Destruir
 ```bash
-terraform destroy -var="project_id=<TU_PROJECT_ID>" -auto-approve
+terraform destroy \
+  -var="project_id=<TU_PROJECT_ID>" \
+  -var="student_name=XXX" \
+  -var="student_id=X" \
+  -auto-approve-auto-approve
 ```
 
 ## ✅ Resultado Esperado
