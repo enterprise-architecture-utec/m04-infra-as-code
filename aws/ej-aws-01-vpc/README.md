@@ -9,6 +9,19 @@ Configurar el provider de AWS en Terraform y crear una VPC (Virtual Private Clou
 - **Internet Gateway (IGW):** Componente que permite la salida a Internet desde la VPC.
 - **Route Table:** Tabla de enrutamiento que define hacia dónde va el tráfico de red.
 
+## 🧭 Diagrama de Arquitectura
+```mermaid
+graph LR
+  A[Usuario/Internet] --> B[Internet Gateway]
+  B --> C[VPC (10.x.0.0/16)]
+  C --> D[Subnet Pública (10.x.1.0/24)]
+  D --> E[Recursos en AWS]
+  subgraph VPC
+    C
+    D
+  end
+```
+
 ## 📁 Archivos
 ```
 ej-aws-01-vpc/
