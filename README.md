@@ -11,30 +11,20 @@
 ```
 terraform-labs/
 ├── azure/
-│   ├── ej-az-01-resource-group/
 │   ├── ej-az-02-vnet-subnet/
 │   ├── ej-az-03-storage-account/
-│   ├── ej-az-04-virtual-machine/
-│   ├── ej-az-05-sql-database/
-│   ├── ej-az-06-app-service/
 │   ├── ej-az-07-key-vault/
 │   └── ej-az-08-container-registry/
 ├── aws/
 │   ├── ej-aws-01-vpc/
-│   ├── ej-aws-02-ec2/
 │   ├── ej-aws-03-s3/
 │   ├── ej-aws-04-lambda/
-│   ├── ej-aws-05-rds/
-│   ├── ej-aws-06-api-gateway/
 │   ├── ej-aws-07-ecs-fargate/
 │   └── ej-aws-08-sns-sqs/
 └── gcp/
     ├── ej-gcp-01-vpc/
-    ├── ej-gcp-02-compute-engine/
     ├── ej-gcp-03-cloud-storage/
-    ├── ej-gcp-04-cloud-sql/
     ├── ej-gcp-05-cloud-functions/
-    ├── ej-gcp-06-gke/
     └── ej-gcp-07-pubsub/
 ```
 
