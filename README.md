@@ -48,9 +48,14 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 sudo apt update && sudo apt install terraform
 terraform -version
 ```
-##  Install AWS
+##  Install AWS CLI
 ```bash
 curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
+```
+
+##  Install AZ CLI
+```bash
+curl -fsSL 'https://azurecliprod.blob.core.windows.net/$root/deb_install.sh' | sudo bash
 ```
 
 ## 🔐 Autenticación
