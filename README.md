@@ -36,6 +36,11 @@ terraform-labs/
 
 ---
 
+## Recomendación
+Utilizar github codespaces: https://github.com/codespaces
+
+<img width="1452" height="732" alt="image" src="https://github.com/user-attachments/assets/201224cd-67d3-432d-850e-ede352761915" />
+
 ##  Install Terraform
 ```bash
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
