@@ -29,8 +29,15 @@ Para evitar conflictos en la cuenta compartida (ya que los nombres de S3 son ún
 terraform init
 
 # Reemplaza 'tu_nombre' y 'tu_id' (ej: aldo y 01)
+
+# opción 1:
 terraform plan -var="student_name=tu_nombre" -var="student_id=tu_id"
 terraform apply -var="student_name=tu_nombre" -var="student_id=tu_id" -auto-approve
+
+# opción 2:
+terraform plan -var="student_name=tu_nombre" -var="student_id=tu_id" -out plan.out
+terraform apply "plan.out"
+
 ```
 
 ### Paso 3: Verificar en AWS Console
